@@ -10,12 +10,14 @@ QSqlDatabase Connector::getDb() const
 
 bool Connector::connect()
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(dbName);
+    bool result = true;
+    if(!db.isOpen()){
+        db = QSqlDatabase::addDatabase("QSQLITE");
+        db.setDatabaseName(dbName);
 
-
-    bool result = db.open();
-    createTables();
+        result = db.open();
+        createTables();
+    }
 
     return result;
 }

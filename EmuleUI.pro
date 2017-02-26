@@ -14,9 +14,19 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    db/connector.cpp
+    db/connector.cpp \
+    dialogaddconsole.cpp \
+    db/console.cpp \
+    db/daoconsole.cpp
 
 HEADERS  += mainwindow.h \
-    db/connector.h
+    db/connector.h \
+    dialogaddconsole.h \
+    db/console.h \
+    db/daoconsole.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    dialogaddconsole.ui
+
+RESOURCES += \
+    icons.qrc

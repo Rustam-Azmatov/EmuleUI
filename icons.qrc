@@ -1,1 +1,7 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/png">
+        <file>icons/Minus-48.png</file>
+        <file>icons/Plus-48.png</file>
+        <file>icons/edit.png</file>
+    </qresource>
+</RCC>
