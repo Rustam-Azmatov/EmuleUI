@@ -5,7 +5,7 @@
 #include "dialogaddconsole.h"
 #include "db/connector.h"
 #include "db/daoconsole.h"
-
+#include "dialoggame.h"
 namespace Ui {
 class MainWindow;
 }
@@ -24,6 +24,8 @@ private slots:
     void on_cmbConsole_currentIndexChanged(int index);
 
     void on_btnDelConsole_clicked();
+
+    void on_btnAddGame_clicked();
 
 private:
     Ui::MainWindow *ui;

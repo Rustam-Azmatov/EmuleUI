@@ -17,16 +17,19 @@ SOURCES += main.cpp\
     db/connector.cpp \
     dialogaddconsole.cpp \
     db/console.cpp \
-    db/daoconsole.cpp
+    db/daoconsole.cpp \
+    dialoggame.cpp
 
 HEADERS  += mainwindow.h \
     db/connector.h \
     dialogaddconsole.h \
     db/console.h \
-    db/daoconsole.h
+    db/daoconsole.h \
+    dialoggame.h
 
 FORMS    += mainwindow.ui \
-    dialogaddconsole.ui
+    dialogaddconsole.ui \
+    dialoggame.ui
 
 RESOURCES += \
     icons.qrc

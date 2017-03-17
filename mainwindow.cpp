@@ -74,3 +74,11 @@ void MainWindow::on_btnDelConsole_clicked()
     daoConsole->remove(listConsole[currentConsoleIndex].getId());
     loadConsole();
 }
+
+void MainWindow::on_btnAddGame_clicked()
+{
+    DialogGame* dlgGame = new DialogGame();
+
+    dlgGame->exec();
+    delete dlgGame;
+}
