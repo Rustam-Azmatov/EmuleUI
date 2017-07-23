@@ -53,7 +53,7 @@ Console *DAOConsole::find(unsigned id)
 
      query.exec();
 
-     while(query.next())
+     if(query.next())
      {
         setValues(query,console);
      }

@@ -12,6 +12,8 @@ Console::Console(const Console &console)
     this->setCommand(console.getCommand());
 }
 
+
+
 Console &Console::operator =(const Console &right)
 {
     if(this == &right)

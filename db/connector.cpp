@@ -57,7 +57,7 @@ void Connector::createTables()
     query.exec("CREATE TABLE GAMES("
                "ID INTEGER PRIMARY KEY,"
                "CONSOLE_ID INTEGER,"
-               "GAME_NAME INTEGER,"
+               "GAME_NAME varchar(128),"
                "PATH_IMG varchar(512),"
                "PATH varchar(512)"
                ")");

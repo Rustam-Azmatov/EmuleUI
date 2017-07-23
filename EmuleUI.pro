@@ -18,14 +18,18 @@ SOURCES += main.cpp\
     dialogaddconsole.cpp \
     db/console.cpp \
     db/daoconsole.cpp \
-    dialoggame.cpp
+    dialoggame.cpp \
+    db/daogames.cpp \
+    db/game.cpp
 
 HEADERS  += mainwindow.h \
     db/connector.h \
     dialogaddconsole.h \
     db/console.h \
     db/daoconsole.h \
-    dialoggame.h
+    dialoggame.h \
+    db/daogames.h \
+    db/game.h
 
 FORMS    += mainwindow.ui \
     dialogaddconsole.ui \
