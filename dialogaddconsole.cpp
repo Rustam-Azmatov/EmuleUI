@@ -13,7 +13,11 @@ DialogAddConsole::DialogAddConsole(QWidget *parent) :
 
 DialogAddConsole::~DialogAddConsole()
 {
-    delete ui;    
+    delete ui;
+    if(console)
+    {
+        delete console;
+    }
 }
 
 void DialogAddConsole::on_teName_textChanged(const QString &str)
@@ -33,9 +37,11 @@ Console *DialogAddConsole::getConsole()
     if(!console)
     {
         console = new Console();
-        console->setCommand(ui->teCmd->text());
-        console->setConsoleName(ui->teName->text());
     }
+
+    console->setCommand(ui->teCmd->text());
+    console->setConsoleName(ui->teName->text());
+
     return console;
 }
 

@@ -2,9 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
 #include "dialogaddconsole.h"
 #include "db/connector.h"
 #include "db/daoconsole.h"
+#include "db/game.h"
+#include "db/daogames.h"
 #include "dialoggame.h"
 namespace Ui {
 class MainWindow;
@@ -30,10 +33,16 @@ private slots:
 private:
     Ui::MainWindow *ui;
     DAOConsole* daoConsole;
+    DAOGames* daoGame;
+
     QVector<Console> listConsole;
+    QVector<Game> listGames;
 
     int currentConsoleIndex;
+    int currentGameIndex;
+
     void loadConsole();
+    void loadGames();
 };
 
 #endif // MAINWINDOW_H
