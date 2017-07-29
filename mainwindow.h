@@ -21,6 +21,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    Console* getCurrentConsole();
+    Game* getCurrentGame();
 private slots:
     void on_btnAddConsole_clicked();
 
@@ -29,6 +31,10 @@ private slots:
     void on_btnDelConsole_clicked();
 
     void on_btnAddGame_clicked();
+
+    void on_lstGames_currentRowChanged(int currentRow);
+
+    void on_btnEdtGame_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -43,6 +49,8 @@ private:
 
     void loadConsole();
     void loadGames();
+
+
 };
 
 #endif // MAINWINDOW_H

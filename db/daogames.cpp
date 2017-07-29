@@ -84,6 +84,25 @@ QVector<Game> DAOGames::getAll()
     return games;
 }
 
+QVector<Game> DAOGames::getAllForConsole(unsigned consoleId)
+{
+    QSqlQuery query;
+
+    query.prepare("SELECT * FROM GAMES WHERE CONSOLE_ID = ?");
+    query.addBindValue(consoleId);
+
+    query.exec();
+    QVector<Game> games;
+
+    while (query.next()) {
+        Game game;
+        this->setValues(query,&game);
+        games.append(game);
+    }
+
+    return games;
+}
+
 void DAOGames::setValues(QSqlQuery query, Game *obj)
 {
     unsigned int id = query.value(query.record().indexOf("ID")).toInt();
