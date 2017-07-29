@@ -56,6 +56,8 @@ private:
     void loadConsole();
     void loadGames();
 
+    void loadImage(QString fileName);
+
 
 };
 

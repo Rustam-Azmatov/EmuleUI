@@ -113,8 +113,24 @@ void MainWindow::loadGames()
         ui->btnDelGame->setEnabled(false);
         ui->btnEdtGame->setEnabled(false);
         ui->btnStart->setEnabled(false);
+
+        ui->lblImg->setPixmap(QPixmap());
     }
 
+}
+
+void MainWindow::loadImage(QString fileName)
+{
+    if(!fileName.isEmpty())
+    {
+        QPixmap image(fileName);
+        image = image.scaled(ui->lblImg->size(), Qt::KeepAspectRatio,Qt::SmoothTransformation);
+
+        ui->lblImg->setPixmap(image);
+    }
+    else{
+        ui->lblImg->setPixmap(QPixmap());
+    }
 }
 
 void MainWindow::on_cmbConsole_currentIndexChanged(int index)
@@ -140,7 +156,7 @@ void MainWindow::on_btnDelConsole_clicked()
 
     msgBox.setIcon(QMessageBox::Warning);
     msgBox.setWindowTitle(tr("Удаление"));
-    msgBox.setText(QString(tr("Удалить настройки консоли %1?"))
+    msgBox.setText(QString(tr("Удалить настройки консоли %1? Список игр пропадет."))
                    .arg(console->getConsoleName()));
 
     msgBox.setStandardButtons(QMessageBox::Yes);
@@ -148,6 +164,8 @@ void MainWindow::on_btnDelConsole_clicked()
     msgBox.setDefaultButton(QMessageBox::No);
     if(msgBox.exec() == QMessageBox::Yes){
         daoConsole->remove(console->getId());
+        daoGame->removeInConsole(console->getId());
+
         loadConsole();
         loadGames();
     }
@@ -180,9 +198,15 @@ void MainWindow::on_lstGames_currentRowChanged(int currentRow)
 {
     currentGameIndex = currentRow;
 
-    ui->btnStart->setEnabled(true);
-    ui->btnEdtGame->setEnabled(true);
-    ui->btnDelGame->setEnabled(true);
+    if(getCurrentGame())
+    {
+        ui->btnStart->setEnabled(true);
+        ui->btnEdtGame->setEnabled(true);
+        ui->btnDelGame->setEnabled(true);
+
+        ui->lblTitle->setText(getCurrentGame()->getName());
+        loadImage(getCurrentGame()->getPathImg());
+    }
 }
 
 void MainWindow::on_btnEdtGame_clicked()

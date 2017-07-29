@@ -14,6 +14,15 @@ void DAOGames::remove(unsigned id)
     query.exec();
 }
 
+void DAOGames::removeInConsole(unsigned consoleId)
+{
+    QSqlQuery query;
+    query.prepare("DELETE FROM GAMES WHERE CONSOLE_ID = ?");
+    query.addBindValue(consoleId);
+
+    query.exec();
+}
+
 void DAOGames::save(Game *obj)
 {
     QSqlQuery query;

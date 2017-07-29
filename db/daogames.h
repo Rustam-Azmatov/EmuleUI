@@ -12,6 +12,7 @@ class DAOGames
 public:
     DAOGames();
     void remove(unsigned id);
+    void removeInConsole(unsigned consoleId);
     void save(Game* obj);
     void update(Game* obj);
 
