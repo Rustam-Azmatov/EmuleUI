@@ -89,7 +89,7 @@ void MainWindow::loadGames()
         consoleId = console->getId();
     }
 
-    listGames = daoGame->getAllForConsole(consoleId);
+    listGames = daoGame->getGamesByNameForConsole(consoleId,ui->leSearchGame->text());
 
     int tempIndex = currentGameIndex;
     ui->lstGames->clear();
@@ -115,6 +115,7 @@ void MainWindow::loadGames()
         ui->btnStart->setEnabled(false);
 
         ui->lblImg->setPixmap(QPixmap());
+        ui->lblTitle->setText("");
     }
 
 }
@@ -251,4 +252,9 @@ void MainWindow::on_btnDelGame_clicked()
 void MainWindow::on_btnStart_clicked()
 {
     GameRunner::runGame(getCurrentConsole(),getCurrentGame());
+}
+
+void MainWindow::on_leSearchGame_textChanged(const QString &arg1)
+{
+    loadGames();
 }

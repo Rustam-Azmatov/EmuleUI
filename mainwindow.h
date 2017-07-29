@@ -42,6 +42,8 @@ private slots:
 
     void on_btnStart_clicked();
 
+    void on_leSearchGame_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     DAOConsole* daoConsole;

@@ -19,6 +19,7 @@ public:
     Game* find(unsigned id);
     QVector<Game> getAll();
     QVector<Game> getAllForConsole(unsigned consoleId);
+    QVector<Game> getGamesByNameForConsole(unsigned consoleId,QString name);
 private:
     void setValues(QSqlQuery query,Game* obj);
 };
