@@ -113,7 +113,6 @@ void MainWindow::loadGames()
         ui->btnDelGame->setEnabled(false);
         ui->btnEdtGame->setEnabled(false);
         ui->btnStart->setEnabled(false);
-        ui->btnEdtGame->setEnabled(false);
     }
 
 }
@@ -135,17 +134,20 @@ void MainWindow::on_cmbConsole_currentIndexChanged(int index)
 
 void MainWindow::on_btnDelConsole_clicked()
 {
+    Console* console = getCurrentConsole();
+
     QMessageBox msgBox;
+
     msgBox.setIcon(QMessageBox::Warning);
-    msgBox.setWindowTitle("Удаление");
-    msgBox.setText(QString("Удалить настройки консоли %1?")
-                   .arg(listConsole[currentConsoleIndex].getConsoleName()));
+    msgBox.setWindowTitle(tr("Удаление"));
+    msgBox.setText(QString(tr("Удалить настройки консоли %1?"))
+                   .arg(console->getConsoleName()));
 
     msgBox.setStandardButtons(QMessageBox::Yes);
     msgBox.addButton(QMessageBox::No);
     msgBox.setDefaultButton(QMessageBox::No);
     if(msgBox.exec() == QMessageBox::Yes){
-        daoConsole->remove(listConsole[currentConsoleIndex].getId());
+        daoConsole->remove(console->getId());
         loadConsole();
         loadGames();
     }
@@ -180,6 +182,7 @@ void MainWindow::on_lstGames_currentRowChanged(int currentRow)
 
     ui->btnStart->setEnabled(true);
     ui->btnEdtGame->setEnabled(true);
+    ui->btnDelGame->setEnabled(true);
 }
 
 void MainWindow::on_btnEdtGame_clicked()
@@ -199,4 +202,29 @@ void MainWindow::on_btnEdtGame_clicked()
 
         delete dlgGame;
     }
+}
+
+void MainWindow::on_btnDelGame_clicked()
+{
+    Game* game = getCurrentGame();
+
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setWindowTitle(tr("Удаление"));
+    msgBox.setText(QString(tr("Удалить игру %1 из списка?"))
+                   .arg(game->getName()));
+
+    msgBox.setStandardButtons(QMessageBox::Yes);
+    msgBox.addButton(QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::No);
+    if(msgBox.exec() == QMessageBox::Yes){
+        daoGame->remove(game->getId());
+
+        loadGames();
+    }
+}
+
+void MainWindow::on_btnStart_clicked()
+{
+    GameRunner::runGame(getCurrentConsole(),getCurrentGame());
 }

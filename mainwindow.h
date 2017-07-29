@@ -9,6 +9,8 @@
 #include "db/game.h"
 #include "db/daogames.h"
 #include "dialoggame.h"
+#include "gamerunner.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -35,6 +37,10 @@ private slots:
     void on_lstGames_currentRowChanged(int currentRow);
 
     void on_btnEdtGame_clicked();
+
+    void on_btnDelGame_clicked();
+
+    void on_btnStart_clicked();
 
 private:
     Ui::MainWindow *ui;

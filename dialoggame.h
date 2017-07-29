@@ -23,6 +23,8 @@ public:
 
     Game* getGame() const;
     void setGame(Game* value);
+protected:
+    void showEvent(QShowEvent* event);
 
 private slots:
     void on_btnViewImage_clicked();

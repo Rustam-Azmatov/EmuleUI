@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     db/daoconsole.cpp \
     dialoggame.cpp \
     db/daogames.cpp \
-    db/game.cpp
+    db/game.cpp \
+    gamerunner.cpp
 
 HEADERS  += mainwindow.h \
     db/connector.h \
@@ -29,7 +30,8 @@ HEADERS  += mainwindow.h \
     db/daoconsole.h \
     dialoggame.h \
     db/daogames.h \
-    db/game.h
+    db/game.h \
+    gamerunner.h
 
 FORMS    += mainwindow.ui \
     dialogaddconsole.ui \

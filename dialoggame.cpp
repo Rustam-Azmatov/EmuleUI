@@ -12,6 +12,8 @@ DialogGame::DialogGame(int consoleId, QWidget *parent) :
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
     checkEnabled();
+
+    setWindowTitle(tr("Редактирование игры"));
 }
 
 DialogGame::DialogGame(Game* game, QWidget *parent) :
@@ -24,7 +26,6 @@ DialogGame::DialogGame(Game* game, QWidget *parent) :
     ui->leName->setText(game->getName());
     ui->leFilePath->setText(game->getPath());
     ui->leImagePath->setText(game->getPathImg());
-    loadImage(game->getPathImg());
 
 
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
@@ -40,7 +41,7 @@ DialogGame::~DialogGame()
 void DialogGame::on_btnViewImage_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
-                                                    "Выбрать файл обложку",
+                                                    tr("Выбрать файл обложку"),
                                                     QDir::homePath(),"Images (*.jpg *.jpeg *.png *.gif)");
 
     ui->leImagePath->setText(fileName);
@@ -74,7 +75,7 @@ void DialogGame::on_leFilePath_textChanged(const QString &arg1)
 void DialogGame::on_btnViewFile_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
-                                                    "Выбрать файл рома",
+                                                    tr("Выбрать файл рома"),
                                                     QDir::homePath(),"All (*.*)");
 
     ui->leFilePath->setText(fileName);
@@ -101,4 +102,14 @@ Game* DialogGame::getGame() const
 void DialogGame::setGame(Game* value)
 {
     game = value;
+}
+
+void DialogGame::showEvent(QShowEvent* event)
+{
+    QDialog::showEvent(event);
+
+    if(!ui->leImagePath->text().isEmpty())
+    {
+        loadImage(ui->leImagePath->text());
+    }
 }
