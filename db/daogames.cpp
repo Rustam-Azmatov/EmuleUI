@@ -80,7 +80,7 @@ Game *DAOGames::find(unsigned id)
 QVector<Game> DAOGames::getAll()
 {
     QSqlQuery query;
-    query.exec("SELECT * FROM GAMES");
+    query.exec("SELECT * FROM GAMES ORDER BY lower(GAME_NAME)");
 
     QVector<Game> games;
 
@@ -97,7 +97,7 @@ QVector<Game> DAOGames::getAllForConsole(unsigned consoleId)
 {
     QSqlQuery query;
 
-    query.prepare("SELECT * FROM GAMES WHERE CONSOLE_ID = ?");
+    query.prepare("SELECT * FROM GAMES WHERE CONSOLE_ID = ? ORDER BY lower(GAME_NAME)");
     query.addBindValue(consoleId);
 
     query.exec();

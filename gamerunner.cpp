@@ -8,4 +8,5 @@ GameRunner::runGame(Console *console, Game *game)
 
     QProcess process;
     process.startDetached(command);
+    qDebug() << command;
 }
